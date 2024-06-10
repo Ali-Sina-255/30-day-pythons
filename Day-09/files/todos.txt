@@ -1,0 +1,5 @@
+django
+pyton
+datavertuatioztion
+react
+angolar

@@ -7,3 +7,5 @@ ja react
 htmx django
 Learn English
 Learn jaddd
+wirte
+djangos

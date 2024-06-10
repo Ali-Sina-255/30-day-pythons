@@ -6,7 +6,6 @@ while True:
             todo = input('Enter a todos :') + "\n"
             with open("todos.txt", 'r') as file:
                 todos = file.readlines()
-
             todos.append(todo)
             with open("todos.txt", 'w') as file:
                 file.writelines(todos)
@@ -14,11 +13,6 @@ while True:
         case 'show':
             with open('todos.txt', 'r') as file:
                 todos = file.readlines()
-
-            # new_todos = []
-            # for item in todos:
-            #     new_item = item.strip('\n')
-            #     new_todos.append(new_item)
 
             # for removing the extra space
             new_todos = [item.strip('\n') for item in todos]
@@ -42,18 +36,20 @@ while True:
             print('Here is how it will be', todos)
 
         case 'complete':
-            number = int(input("Enter the number you want to delete :"))
+            number = int(input("Number of the todo to completed :"))
 
             with open('todos.txt', 'r') as file:
                 todos = file.readlines()
             index = number - 1
-            todo_to_remove = todos[index]
+            todo_to_remove = todos[index].strip('\n')
 
             todos.pop(index)
 
             with open("todos.txt", 'w') as file:
                 file.writelines(todos)
+
             message = f"To do {todo_to_remove} is was remove form the list !"
+            print(message)
 
         case 'exit':
             break
