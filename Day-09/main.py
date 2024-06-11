@@ -58,6 +58,3 @@ while True:
 
 print("Bye!!")
 
-
-def detaced(user,self):
-    return  self.name

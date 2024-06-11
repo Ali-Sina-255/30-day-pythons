@@ -1,11 +1,16 @@
+def get_todo():
+    with open("files/todos.txt", 'r') as local_file:
+        local_todos = local_file.readlines()
+    return local_todos
+
+
 while True:
     user_action = input("Type show, add,edit, complete, exit :")
     user_action = user_action.strip()
 
     if user_action.startswith('add'):
         todo = user_action[4:]
-        with open("files/todos.txt", 'r') as file:
-            todos = file.readlines()
+        todos = get_todo()
 
         todos.append(todo + '\n')
 
@@ -13,10 +18,7 @@ while True:
             file.writelines(todos)
 
     elif user_action.startswith('show'):
-
-        with open('files/todos.txt', 'r') as file:
-            todos = file.readlines()
-
+        get_todo()
         for index, item in enumerate(todos):
             item = item.strip('\n')
             item = item.title()
@@ -24,12 +26,8 @@ while True:
 
     elif user_action.startswith('edit'):
         try:
-
             number = int(user_action[5:])
-
-            with open("files/todos.txt", 'r') as file:
-                todos = file.readlines()
-
+            todos = get_todo()
             new_todo = input("Enter new tods .")
             print("here is todo existing", todos)
 
@@ -42,11 +40,8 @@ while True:
 
     elif user_action.startswith('complete'):
         try:
-
             number = int(user_action[9:])
-
-            with open('files/todos.txt', 'r') as file:
-                todos = file.readlines()
+            todos = get_todo()
             index = number - 1
             todo_to_remove = todos[index].strip('\n')
 
@@ -57,6 +52,7 @@ while True:
 
             message = f"To do {todo_to_remove} is was remove form the list !"
             print(message)
+
         except IndexError:
 
             print("There is no Number with that index .")
